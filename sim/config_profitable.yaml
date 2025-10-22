@@ -1,0 +1,36 @@
+seed: 42
+horizon_days: 90
+steps_per_day: 24
+
+amm:
+  type: "constant_product"
+  fee_bps: 30  # Higher fees for better profitability
+
+initial_state:
+  plusd_reserve: 5_000_000
+  usdt0_reserve: 5_000_000
+  trevee_deposit_plusd: 1_000_000
+  rehyp_fraction: 0.5  # Moderate rehypothecation
+
+yields:
+  underlying_yield_apr: 0.08   # 8% base yield
+  rehyp_yield_apr: 0.15        # 15% rehyp yield
+  borrow_cost_apr: 0.06        # 6% borrow cost (lower than yields)
+  peg_deviation_std_bps: 5
+
+flow:
+  model: "deterministic"
+  deterministic_schedule_bps_of_pool: 25  # 0.25% of pool per day
+  stochastic:
+    mu_daily: 0.0
+    sigma_daily: 0.25
+
+risk:
+  max_borrow_multiple: 0.8
+
+costs:
+  ops_cost_usd_per_day: 100  # Lower ops cost
+
+reporting:
+  mark_to_market_price_plusd: 1.0
+  mark_to_market_price_usdt0: 1.0

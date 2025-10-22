@@ -1,0 +1,37 @@
+# Optimized scenario: Maximize profitability
+seed: 42
+horizon_days: 90
+steps_per_day: 24
+
+amm:
+  type: "constant_product"
+  fee_bps: 50  # Higher fees to compensate borrow costs
+
+initial_state:
+  plusd_reserve: 5_000_000
+  usdt0_reserve: 5_000_000
+  trevee_deposit_plusd: 500_000  # Smaller deposit = less borrow needed
+  rehyp_fraction: 0.7  # Higher rehyp for more yield
+
+yields:
+  underlying_yield_apr: 0.10   # 10% base yield
+  rehyp_yield_apr: 0.18        # 18% rehyp yield
+  borrow_cost_apr: 0.05        # Low borrow environment
+  peg_deviation_std_bps: 5
+
+flow:
+  model: "deterministic"
+  deterministic_schedule_bps_of_pool: 40  # High trading volume
+  stochastic:
+    mu_daily: 0.0
+    sigma_daily: 0.25
+
+risk:
+  max_borrow_multiple: 0.8
+
+costs:
+  ops_cost_usd_per_day: 50  # Minimal ops cost
+
+reporting:
+  mark_to_market_price_plusd: 1.0
+  mark_to_market_price_usdt0: 1.0
