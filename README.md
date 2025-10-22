@@ -1,6 +1,22 @@
-# Eulerswap LP Profitability Simulator
+# Eulerswap Rehypothecation Profitability Simulator
 
-A Python-based simulator for analyzing LP profitability when Trevee provides one-sided liquidity (plUSD only) in a constant-product AMM, with all trade flow being **plUSD → USDT0**.
+A Python-based simulator for analyzing LP profitability with **rehypothecation** when Trevee provides one-sided liquidity (plUSD only) in a constant-product AMM, with all trade flow being **plUSD → USDT0**.
+
+## 🌐 Web Interface
+
+**NEW:** Interactive web dashboard available!
+
+```bash
+# Install web dependencies
+pip install -r requirements-web.txt
+
+# Launch web interface
+streamlit run app.py
+```
+
+Access at http://localhost:8501
+
+**Deploy to cloud:** See [DEPLOYMENT.md](DEPLOYMENT.md) for Streamlit Cloud, Railway, or Render deployment.
 
 ## Overview
 
