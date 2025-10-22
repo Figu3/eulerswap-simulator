@@ -1,0 +1,36 @@
+seed: 42
+horizon_days: 180
+steps_per_day: 24
+
+amm:
+  type: "constant_product"
+  fee_bps: 7
+
+initial_state:
+  plusd_reserve: 5_000_000
+  usdt0_reserve: 5_000_000
+  trevee_deposit_plusd: 1_000_000
+  rehyp_fraction: 0.6
+
+yields:
+  underlying_yield_apr: 0.06
+  rehyp_yield_apr: 0.12
+  borrow_cost_apr: 0.08
+  peg_deviation_std_bps: 5
+
+flow:
+  model: "deterministic"
+  deterministic_schedule_bps_of_pool: 20
+  stochastic:
+    mu_daily: 0.0
+    sigma_daily: 0.25
+
+risk:
+  max_borrow_multiple: 0.8
+
+costs:
+  ops_cost_usd_per_day: 150
+
+reporting:
+  mark_to_market_price_plusd: 1.0
+  mark_to_market_price_usdt0: 1.0
